@@ -1,0 +1,634 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html, body {
+    height: 100%; 
+}
+
+body {
+    background-color: #0A0A0A;
+    display: flex;
+    flex-direction: column;
+}
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; 
+    background-color: #252527; 
+}
+
+.logo {
+    display: flex;        
+    align-items: center;    
+}
+
+.logo img {
+    width: 70px;          
+    height: auto;          
+    margin-right: 5px;     
+}
+
+.logo b {
+    color: #ff4500;       
+    font-size: 20px;        
+}
+
+.logo a {
+    text-decoration: none; 
+    display: flex; 
+    align-items: center; 
+    color: inherit; 
+}
+
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    border: 1px solid #ccc;
+    background-color: #BFBFBF;
+    border-radius: 20px;
+    padding: 10px 10px 10px 40px;
+    width: 500px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.search img {
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.search input:focus {
+    border-color: #ff4500;
+    box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons button {
+    background-color: #ff4500;
+    color: #ffffff; 
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+    background-color: #e03d00;
+}
+
+.buttons button:focus {
+    outline: none;
+}
+
+/* Footer */
+
+.footer {
+    background-color: #252527;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.footer .social-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.footer .social-icons img:hover {
+    opacity: 0.7;
+}
+
+
+/* Main Part */
+
+.main-part {
+    background-color: #0A0A0A;
+    color: white;
+    flex: 1; /* Занимає весь доступний простір між header і footer */
+}
+
+.main-part h2{
+    text-align: center;
+    color: #BFBFBF;
+}
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Дозволити прокрутку, якщо контент більший за розмір модального вікна */
+    background-color: rgba(0, 0, 0, 0.4); 
+    color: white;
+}
+
+.modal-content {
+    background-color: #252527;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative; 
+}
+
+/* Стилі для кнопки закриття модального вікна */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; /* Курсор у вигляді руки при наведенні */
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Стилі для форм у модальному вікні */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.modal-content input {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #BFBFBF;
+    border: 1px solid #BFBFBF;
+    border-radius: 20px;
+}
+
+/* Контейнер для кнопки */
+.button-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px; 
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #ff4500;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #e03d00; 
+}
+
+.modal-content h2 {
+    color: #BFBFBF;
+    text-align: center;
+}
+
+.modal a {
+    text-decoration: none; 
+    display: flex; 
+    font-size: 20px;
+    color: #BFBFBF; 
+}
+
+.error {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4500;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    background-color: #e03d00;
+}
+
+/* Профіль користувача */
+
+.profile button{
+    background-color: #ff4500;
+    color: #ffffff; 
+    border: none;
+    border-radius: 20px;
+    width: 50px;
+    height: 40px;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer; 
+}
+
+.menu-user a {
+    text-decoration: none; 
+    display: flex; 
+    font-size: 20px;
+    color: #BFBFBF; 
+}
+.modal-user {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.modal-content {
+    background-color: #252527;
+    margin: 15% auto; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative; /* Для позиціонування хрестика */
+}
+
+/* Основні стилі для сторінки пошуку */
+.main-part {
+    background-color: #0A0A0A;
+    color: white;
+    flex: 1;
+    padding: 20px; 
+}
+
+/* Основні стилі для кожного запису */
+.edit-item {
+    background-color: #1a1a1a; 
+    border: 1px solid #333; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-top: 20px; 
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.edit-item h3 {
+    text-align: center; 
+    margin-bottom: 10px; 
+    font-size: 24px;
+}
+
+.edit-item p {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+}
+
+/* Стилі для зображень */
+.edit-item img {
+    max-width: 100%; 
+    height: auto; 
+    max-height: 200px; 
+    border-radius: 10px; 
+    margin-top: 10px; 
+}
+
+/* Смуга прокрутки */
+::-webkit-scrollbar{
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #2c2c2c;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #ff4500;
+    border-radius: 10px;
+    border: 3px solid #2c2c2c;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: #e03d00;
+}
+
+/* Новий Eddit */
+.new-Eddit {
+    width: 80%;
+    max-width: 1000px; 
+    margin-top: 100px;
+    align-self: center;
+    padding: 30px;
+    background-color: #333;
+    border-radius: 10px;
+}
+.new-Eddit form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-Eddit label {
+    margin-top: 15px;
+    font-size: 18px;
+    color: white;
+}
+
+.new-Eddit input[type="text"],
+.new-Eddit textarea {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #BFBFBF;
+    border: 1px solid #BFBFBF;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.new-Eddit input[type="file"] {
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.new-Eddit button {
+    padding: 10px;
+    background-color: #ff4500;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.new-Eddit button:hover {
+    background-color: #e03d00; 
+}
+
+.new-Eddit .custom-file-upload {
+    display: inline-block;
+    padding: 10px;
+    background-color: #ed622f;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer; 
+    font-size: 16px;
+    text-align: center;
+}
+
+.new-Eddit .custom-file-upload:hover {
+    background-color: #ff4500; 
+}
+
+.new-Eddit textarea {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #BFBFBF;
+    border: 1px solid #BFBFBF;
+    border-radius: 20px;
+    width: 100%;
+    height: 200px;
+    box-sizing: border-box;
+}
+
+.edit-item {
+    position: relative; 
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.button-delete {
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+}
+
+.button-delete button {
+    padding: 10px;
+    background-color: #ff4500;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.button-like {
+    background: url('../Images/heart.png') no-repeat center center; 
+    background-size: contain;
+    border: none;
+    width: 30px; 
+    height: 30px; 
+    cursor: pointer;
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px; 
+}
+
+.button-like.liked {
+    background: url('../Images/heart-filled.png') no-repeat center center; 
+    background-size: contain;
+}
+
+.like-count {
+    position: absolute;
+    bottom: 15px;
+    left: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.comment-btn{
+    background: url('../Images/comment.png') no-repeat center center; 
+    background-size: contain;
+    border: none;
+    width: 30px; 
+    height: 30px; 
+    cursor: pointer;
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+}
+
+/*коментарі*/
+
+.com-item {
+    background-color: #1a1a1a; 
+    border: 1px solid #333; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-top: 20px; 
+    color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.com-item h3 {
+    text-align: center; 
+    margin-bottom: 10px; 
+    font-size: 24px;
+}
+
+.com-item p {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+}
+
+.com-item img {
+    max-width: 100%; 
+    height: auto; 
+    max-height: 200px; 
+    border-radius: 10px; 
+    margin-top: 10px; 
+}
+
+/* Стилі для коментарів */
+.comments-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    width: calc(100% - 40px); 
+    margin-left: 20px; 
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+
+.comment-text {
+    text-align: left; 
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.comment-count {
+    position: absolute;
+    bottom: 15px;
+    right: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.new-Comment label {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.new-Comment input[type="text"] {
+    padding: 5px;
+    background-color: #BFBFBF;
+    border: 1px solid #BFBFBF;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 10px; 
+    flex-grow: 1; 
+}
+
+.input-button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    padding: 1px;
+    background-color: #ff4500;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #e03d00;
+}
+
+.comments-section p{
+    margin-top: px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #BFBFBF;
+}
